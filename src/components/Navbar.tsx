@@ -1,17 +1,20 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
     <nav className="max-w-sm mx-auto my-7">
       <ul className="flex items-center justify-between">
         <li className="hover:text-[#149eca] duration-200">
-          <Link to="/">Home</Link>
+          <NavLink to="/">Home</NavLink>
         </li>
         <li className="hover:text-[#149eca] duration-200">
-          <Link to="/contact">Contact</Link>
+          <NavLink to="/contact">Contact</NavLink>
         </li>
         <li className="hover:text-[#149eca] duration-200">
-          <Link to="/about">About Us</Link>
+          <NavLink to="/about">About Us</NavLink>
+        </li>
+        <li className="hover:text-[#149eca] duration-200">
+          <NavLink to="/learn">Learn</NavLink>
         </li>
       </ul>
     </nav>

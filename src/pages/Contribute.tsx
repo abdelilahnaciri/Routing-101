@@ -1,5 +1,5 @@
 import Button from "../components/ui/Button";
-import Textarea from "../components/ui/TextArea";
+import Textarea from "../components/ui/Textarea";
 
 const ContributePage = () => {
   return (

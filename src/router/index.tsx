@@ -14,8 +14,9 @@ import ThinkingInReactPage from "../pages/Learn/ThinkingInReact";
 import InstallationPage from "../pages/Learn/Installation";
 import ContributePage from "../pages/Contribute";
 import LoginPage from "../pages/Login";
+import ProtectedRoute from "../components/auth/ProtectedRoute";
 
-const isLoggedIn = false;
+const isLoggedIn = true;
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -27,11 +28,19 @@ const router = createBrowserRouter(
         <Route path="/about" element={<AboutPage />} />
         <Route
           path="/contribute"
-          element={isLoggedIn ? <ContributePage /> : <Navigate to="/login" />}
+          element={
+            <ProtectedRoute isAllowed={isLoggedIn} redirectPath="/login">
+              <ContributePage />
+            </ProtectedRoute>
+          }
         />
         <Route
           path="/login"
-          element={!isLoggedIn ? <LoginPage /> : <Navigate to="/contribute" />}
+          element={
+            <ProtectedRoute isAllowed={!isLoggedIn} redirectPath="/contribute">
+              <LoginPage />
+            </ProtectedRoute>
+          }
         />
       </Route>
       {/* Learn Layout */}

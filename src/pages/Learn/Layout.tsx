@@ -1,14 +1,16 @@
 import { Outlet } from "react-router-dom";
-import LearnAside from "../../components/LearnAside";
 import Navbar from "../../components/Navbar";
+import LearnAside from "../../components/LearnAside";
 
 const LearnLayout = () => {
   return (
-    <>
-      <Navbar />
+    <div className="learn-layout">
       <LearnAside />
-      <Outlet />
-    </>
+      <div className="ml-72">
+        <Navbar />
+        <Outlet />
+      </div>
+    </div>
   );
 };
 

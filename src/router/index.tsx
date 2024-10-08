@@ -1,4 +1,5 @@
 import {
+  Navigate,
   Route,
   createBrowserRouter,
   createRoutesFromElements,
@@ -14,6 +15,8 @@ import InstallationPage from "../pages/Learn/Installation";
 import ContributePage from "../pages/Contribute";
 import LoginPage from "../pages/Login";
 
+const isLoggedIn = false;
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
@@ -22,8 +25,14 @@ const router = createBrowserRouter(
         <Route index element={<HomePage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/about" element={<AboutPage />} />
-        <Route path="/contribute" element={<ContributePage />} />
-        <Route path="/login" element={<LoginPage />} />
+        <Route
+          path="/contribute"
+          element={isLoggedIn ? <ContributePage /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/login"
+          element={!isLoggedIn ? <LoginPage /> : <Navigate to="/contribute" />}
+        />
       </Route>
       {/* Learn Layout */}
       <Route path="/learn" element={<LearnLayout />}>

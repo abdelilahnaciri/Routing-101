@@ -1,5 +1,4 @@
 import {
-  Navigate,
   Route,
   createBrowserRouter,
   createRoutesFromElements,
@@ -17,7 +16,9 @@ import LoginPage from "../pages/Login";
 import ProtectedRoute from "../components/auth/ProtectedRoute";
 
 const isLoggedIn = true;
-
+const userData: { email: string } | null = isLoggedIn
+  ? { email: "Email@gmail.com" }
+  : null;
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
@@ -37,7 +38,11 @@ const router = createBrowserRouter(
         <Route
           path="/login"
           element={
-            <ProtectedRoute isAllowed={!isLoggedIn} redirectPath="/contribute">
+            <ProtectedRoute
+              isAllowed={!isLoggedIn}
+              redirectPath="/contribute"
+              data={userData}
+            >
               <LoginPage />
             </ProtectedRoute>
           }
